@@ -34,7 +34,9 @@ public class Main {
             ceby.add(Tnplus1);
         }
 
-        for(Polynomial p : ceby){
+        for(int count = 0; count < 10; count ++){
+            Polynomial p = ceby.get(count);
+            System.out.print("Term " + count + " = ");
             System.out.println(p.toString());
         }
 

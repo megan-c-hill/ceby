@@ -22,8 +22,19 @@ public class Polynomial {
 
     public String toString(){
         String result = "";
-        for (Term t : polynomial){
-            result += t.toString();
+
+        for(int count = 0; count < polynomial.size(); count++){
+            Term t = polynomial.get(count);
+            if (t.getCoefficient() >= 1  && count != 0){
+                result += " + " + t.toString();
+            }
+            else if (t.getCoefficient() <= -1){
+                result += t.toString();
+            }
+            else{
+                result += t.toString();
+            }
+
         }
         return result;
     }
@@ -47,7 +58,6 @@ public class Polynomial {
      * @param poly the given polynomial which is the one subtracted
      * @return the result of the polynomial subtraction
      */
-    //TODO: Make it so that it catches terms that don't share an exponent
     public Polynomial subtract(Polynomial poly){
         ArrayList<Term> newPoly = new ArrayList<>();
         boolean[] term2Used = new boolean[poly.getPolynomial().size()];

@@ -38,7 +38,22 @@ public class Term {
 
     public String toString(){
         String result = "";
-        result += this.getCoefficient();
+
+        if(this.getCoefficient() > 1) {
+            result += this.getCoefficient();
+        }
+        else if (this.getCoefficient() < -1){
+            result += " - " + this.getCoefficient() * -1;
+        }
+        else if(this.getExponent() == 0){
+            if (this.getCoefficient() == -1) {
+                result += " - " + this.getCoefficient() * -1;
+            }
+            else {
+                result += this.getCoefficient();
+            }
+        }
+
         if (this.getExponent()!=0){
             result += "x";
             if(this.getExponent()!=1){
