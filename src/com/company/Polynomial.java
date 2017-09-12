@@ -12,6 +12,10 @@ public class Polynomial {
         this.polynomial = polynomial;
     }
 
+    public Polynomial (){
+
+    }
+
     public ArrayList<Term> getPolynomial(){
         return polynomial;
     }
@@ -46,15 +50,37 @@ public class Polynomial {
     //TODO: Make it so that it catches terms that don't share an exponent
     public Polynomial subtract(Polynomial poly){
         ArrayList<Term> newPoly = new ArrayList<>();
+        boolean[] term2Used = new boolean[poly.getPolynomial().size()];
+        boolean Term1Used = false;
+
+        for(int i = 0; i<term2Used.length; i++){
+            term2Used[i] = false;
+        }
+
         for (Term term1 : polynomial){
-            for (Term term2: poly.getPolynomial()){
+            for (int count = 0; count < poly.getPolynomial().size(); count ++){
+                Term term2 = poly.getPolynomial().get(count);
                 if(term1.getExponent() == term2.getExponent()){
+                    Term1Used = true;
+                    term2Used[count] = true;
                     int newCoeff = term1.getCoefficient()-term2.getCoefficient();
                     Term t = new Term(newCoeff, term1.getExponent());
                     newPoly.add(t);
                 }
             }
+            if (!Term1Used){
+                newPoly.add(term1);
+            }
 
+        }
+        Term negOne = new Term (-1,0);
+        for(int i = 0; i<term2Used.length; i++){
+            if(!term2Used[i]){
+                Term term2 = poly.getPolynomial().get(i);
+                Term negativeTerm = new Term();
+                negativeTerm = term2.multiply(negOne);
+                newPoly.add(negativeTerm);
+            }
         }
         return new Polynomial(newPoly);
     }

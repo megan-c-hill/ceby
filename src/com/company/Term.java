@@ -12,6 +12,10 @@ public class Term {
         this.exponent = exponent;
     }
 
+    public Term(){
+
+    }
+
     public int getCoefficient(){
         return coefficient;
     }

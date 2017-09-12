@@ -24,11 +24,14 @@ public class Main {
         ceby.add(b);
 
         for (int count = 2; count < 10; count++){
-            Polynomial p = ceby.get(count - 1);
+            Polynomial Tn = ceby.get(count - 1);
+            Polynomial Tnminus1 = ceby.get(count - 2);
+            Polynomial Tnplus1;
             Term twoX = new Term(2,1);
-            p = p.distribute(twoX);
-            p = p.subtract(ceby.get(count - 2));
-            ceby.add(p);
+            Polynomial intermediate = Tn.distribute(twoX);
+            Tnplus1 = intermediate.subtract(Tnminus1);
+
+            ceby.add(Tnplus1);
         }
 
         for(Polynomial p : ceby){
