@@ -16,6 +16,14 @@ public class Polynomial {
         return polynomial;
     }
 
+    public String toString(){
+        String result = "";
+        for (Term t : polynomial){
+            result += t.toString();
+        }
+        return result;
+    }
+
     /**
      * Distributes a single term across a polynomial
      * @param t the term that will be distributed, usually 2x
