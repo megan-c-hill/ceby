@@ -4,8 +4,8 @@ package com.company;
  * Created by megansISU on 9/11/17.
  */
 public class Term {
-    int coefficient;
-    int exponent;
+    private int coefficient;
+    private int exponent;
 
     public Term(int coefficient, int exponent){
         this.coefficient = coefficient;
